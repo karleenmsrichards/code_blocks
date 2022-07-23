@@ -5,49 +5,56 @@
   <ul id="list"></ul>   
   <button id="btn">Select Facilitator</button>
   Facilitator:<span id="name"></span></p>
+
   
   <script>
-    var names;
+  var names;
 
-  function getNumberOrString(value) {
-    // Convert a string value to a number if possible
-    let number_value = Number(value);
-    if (Number.isNaN(number_value)) {
-      return value
-    } else {
-      return number_value
-    }
+function getNumberOrString(value) {
+  // Convert a string value to a number if possible
+  let number_value = Number(value);
+  if (Number.isNaN(number_value)) {
+    return value
+  } else {
+    return number_value
   }
+}
 
-  function randomInt(n) {
-    // Return a random number from in [0, n[
-    return Math.floor(Math.random()*n);
-  }
+function randomInt(n) {
+  // Return a random number from in [0, n[
+  return Math.floor(Math.random()*n);
+}
 
-  function randomMember(arr) {
-    // Return a random member of the array
-    return arr[randomInt(arr.length)]
-  }
-
-
-  names = [];
+function randomMember(arr) {
+  // Return a random member of the array
+  return arr[randomInt(arr.length)]
+}
 
 
-  document.getElementById('add').addEventListener('click', (event) => {
-    let element_text = document.getElementById('text');
-    names.unshift(getNumberOrString(document.getElementById('text').value));
-    let element_list = document.getElementById('list');
-    let new_li = document.createElement('li');
-    new_li.innerText = getNumberOrString(document.getElementById('text').value);
+names = [];
 
-    element_list.appendChild(new_li);
 
-  });
+document.getElementById('add').addEventListener('click', (event) => {
+  let element_text = document.getElementById('text');
+  names.unshift(getNumberOrString(document.getElementById('text').value));
+  let element_list = document.getElementById('list');
+  let new_li = document.createElement('li');
+  new_li.innerText = getNumberOrString(document.getElementById('text').value);
 
-  document.getElementById('btn').addEventListener('click', (event) => {
-    let element_name = document.getElementById('name');
-    element_name.innerText = randomMember(names);
+  element_list.appendChild(new_li);
 
-  });
+});
+
+document.getElementById('btn').addEventListener('click', (event) => {
+  let element_name = document.getElementById('name');
+  element_name.innerText = randomMember(names);
+
+});
+
+document.getElementById('add').addEventListener('click', (event) => {
+  event.target.style.backgroundColor = '#006600';
+  event.target.style.color = '#ffcccc';
+
+});
   </script>
 </html>
